@@ -72,4 +72,4 @@ To start the project in visual run the following comand:
 dotnet run --project <NameOfProject>
 ```
 ## Update:
-The work in progress still.
+The work still in progress, so for now just setup the work space.
