@@ -71,5 +71,5 @@ To start the project in visual run the following comand:
 ```bash
 dotnet run --project <NameOfProject>
 ```
-
-## Resume:
+## Update:
+The work in progress still.
