@@ -168,13 +168,14 @@ var settings = new FhirClientSettings
         };
 var client = new FhirClient("http://server.fire.ly", settings)
 ```
-
-You can also toggle these settings after the client has been initialized.
+You can toggle these settings after the client has been initialized.
 
 #### PreferredFormat
 
-To specify the preferred format –JSON or XML– of the content to be used when communicating with the FHIR server, you can use the **PreferredFormat** attribute.
 The default setting for this field is XML.
+
+To specify the preferred format –JSON or XML– of the content to be used when communicating with the FHIR server, you can use the **PreferredFormat** attribute.
+
 
 ```bash
 client.Settings.PreferredFormat = ResourceFormat.Json;
@@ -203,8 +204,8 @@ namespace fhir1srProject
             #associating the server to the client
             FhirClient fhirClient = new FhirClient(fhirServer);
 	  
-	    #preferred settings
-	    var settigs = new FhirClientSettings
+            #preferred settings
+            var settigs = new FhirClientSettings
             {
                 PreferredFormat = ResourceFormat.Json,
                 ReturnPreference = ReturnPreference.Representation,

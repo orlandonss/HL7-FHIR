@@ -20,7 +20,6 @@ namespace fhir1srProject
             {
                 PreferredFormat = ResourceFormat.Json,
                 ReturnPreference = ReturnPreference.Representation,
-
             };
         }
     }
