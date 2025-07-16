@@ -91,8 +91,6 @@ dotnet run --project <NameOfProject>
 ![1752655283745](image/README/1752655283745.png)
 ![1752655292984](image/README/1752655292984.png)
 
-
-
 We can also add a patient via commandline.
 
 Pay attention these command is just and example, the Id of your patient may be  diferent..
@@ -157,13 +155,5 @@ curl --location --request PUT "http://hapi.fhir.org/baseR4/Patient/12345" \
   "birthDate": "1990-05-20"
 }'
 ```
-
-
-
-
-
-
-
-
 
 The work still in progress, so for now just setup the work space.
