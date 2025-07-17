@@ -1,18 +1,19 @@
-# SETUP AND DEVELOPING AN APPLICATION IN HL7-FHIR STU3 IN WINDOWS:
+# SETTUP AND CREATING AN API CLIENT-SERVER HL7-FHIR STU3 v1.90 IN WINDOWS:
 
 This is a guide document on how to start and build an **HL7-FHIR app project** in Visual Studio Code.
 This application is developed in **C#**, using external **NuGet** packages to support development.
 
 # The 1st Project
 
-The first project will consist in communicating with the server by getting a list of patients, searching for an specific one and a getting a short and brief description about patient resources.
+The first project will consist in communicating with the server by getting a list of patients, searching for an specific one and a getting a short and brief description about patient resources. Testing the communication between client-server.
+
+The project is developed in STU-3 also known as R3 of FHIR, the version of the packets provided it's 1.90.
 
 ## Needed Tools
 
 The developent of the app will need certain requirements.
 
 - [**VISUAL STUDIO**](https://visualstudio.microsoft.com/)**/**[**VISUAL STUDIO CODE**](https://visualstudio.microsoft.com/)
-- [**Windows Pretty Terminal**](https://www.hanselman.com/blog/how-to-make-a-pretty-prompt-in-windows-terminal-with-powerline-nerd-fonts-cascadia-code-wsl-and-ohmyposh) **(not Mandatory)**
 - [**HL7-FHIR V4**](https://www.nuget.org/packages/Hl7.Fhir.R4/)
 - [**GIT**](https://git-scm.com/)
 - [**.NET**](https://dotnet.microsoft.com/download/dotnet-core) **(Preference Up to date)**
@@ -137,6 +138,8 @@ For setting up the client server, it will be used the fhir public servers.
 
 A FhirClient works with a single server. If you work with multiple servers simultanuously, you’ll have to create a FhirClient for each of them. Since resources may reference other resources on a different FHIR server, you’ll have to inspect any references and direct them to the right FhirClient.
 
+The server Demo to link to the project will depent in wich version you do use, so be carefull otherwise there will be struggle and problems in running  the programm.
+
 # Methods / Constructors:
 
 ### FhirClient
@@ -145,10 +148,11 @@ The constructor method is overloaded, to enable you to use a URI instead of a st
 The default setting is false.
 
 ```bash
-private const string fhirServer = "http://vonk-fire.ly";
+#LINKING STU3 TO A OPEN HL7 FHIR DEMO SERVER
+private const string fhirServer = "http://hapi.fhir.org/baseDstu3";
 var client = new FhirClient(fhirServer);
 
-#or
+#OR
 
-var client = new FhirClient("http://vonk-fire.ly");
+var client = new FhirClient("http://hapi.fhir.org/baseDstu3");
 ```
