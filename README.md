@@ -132,13 +132,27 @@ https://hl7.org/fhir/patient.html
 
 ### Fhir Rest
 
+The **FHIR REST library** refers to libraries or tools that let developers **interact with FHIR servers** using  **RESTful APIs** .
+
+these are APIs that use standard HTTP methods (GET, POST, PUT, DELETE),reading , searchings  for patients updating content and consulting certain characterists when needed by combining queries paramaters.
+
+```
+FhirClient client = new FhirClient(fhirServer)
+            {
+                PreferredFormat = ResourceFormat.Json,
+                PreferredReturn = Prefer.ReturnRepresentation
+            };
+```
+
 # Creating a Fhir Client Server
 
 For setting up the client server, it will be used the fhir public servers.
 
 A FhirClient works with a single server. If you work with multiple servers simultanuously, you’ll have to create a FhirClient for each of them. Since resources may reference other resources on a different FHIR server, you’ll have to inspect any references and direct them to the right FhirClient.
 
-The server Demo to link to the project will depent in wich version you do use, so be carefull otherwise there will be struggle and problems in running  the programm.
+The server Demo to link to the project will depend in wich version you do use, so be carefull , otherwise there will be struggle and problems in running  the programm.
+
+When workin with HTTP the port number is 80, while when working with HTTPS the port is 443.
 
 # Methods / Constructors:
 
@@ -155,4 +169,37 @@ var client = new FhirClient(fhirServer);
 #OR
 
 var client = new FhirClient("http://hapi.fhir.org/baseDstu3");
+```
+
+# Demo test Public Server
+This short  and simple following code, permit to stablish a connection to the FHIR public demo test servers and consult the number of patients in the public DataBase.
+
+```bash
+using System;
+using Hl7.Fhir.Model;
+using Hl7.Fhir.Rest;
+
+namespace Project01
+{
+
+    public static class FhirProject
+    {
+     #linking the Open Server
+        private const string fhirServer = "http://hapi.fhir.org/baseDstu3";
+        static void Main(string[] args)
+        {
+            #atributing preference settings/configurations to the server
+            FhirClient client = new FhirClient(fhirServer)
+            {
+                PreferredFormat = ResourceFormat.Json,
+                PreferredReturn = Prefer.ReturnRepresentation
+            };
+            #creating a bundle wich returns every patient existing in the database server
+            Bundle patientBundle = client.Search<Patient>(null);
+
+            #consulting the number of patients 
+            Console.WriteLine($"Entry count: {patientBundle.Entry.Count}");
+        }
+    }
+}
 ```

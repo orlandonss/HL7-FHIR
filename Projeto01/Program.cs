@@ -19,7 +19,7 @@ namespace Project01
                 PreferredReturn = Prefer.ReturnRepresentation
             };
             Bundle patientBundle = client.Search<Patient>(null);
-            Console.WriteLine($"Total:{patientBundle.Total} Entry count: {patientBundle.Entry.Count}");
+            Console.WriteLine($"Entry count: {patientBundle.Entry.Count}");
         }
     }
 }
