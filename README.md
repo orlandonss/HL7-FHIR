@@ -1,4 +1,4 @@
-# SETUP AND DEVELOPING AN APPLICATION IN HL7-FHIR IN WINDOWS:
+# SETUP AND DEVELOPING AN APPLICATION IN HL7-FHIR STU3 IN WINDOWS:
 
 This is a guide document on how to start and build an **HL7-FHIR app project** in Visual Studio Code.
 This application is developed in **C#**, using external **NuGet** packages to support development.
@@ -53,7 +53,11 @@ It specifies the name of the project that the dotnet new command will create.
 # INSTALL THE PACKAGES:
 
 When working with HL7 standard and choosing a version of the protocol, it is possible to run different versions in the same project but it isn't recomended, so choose one wisely and search for wich one will be better for you to chose.
-In this Project we will advice using the **version R4** of Fhir.
+In this Project we will advice using the **version STU3 also known as R3** of Fhir.
+
+The way you manipulate Data structures will depent in the version of each protocol you will be using, also the version of the libary/packages you have chosen to use.
+
+These kind of Api implementation depends on the systems and wich funtionalities and capabilities the systems are compatible. Choose Wisely.
 
 ## SETUP THE NUGETS (CHOOSE A VERSION):
 
@@ -64,29 +68,25 @@ https://www.nuget.org/packages/Hl7.Fhir.R4/.
 ### HL7-FHIR V-STU3:
 
 ```bash
-- dotnet add package Hl7.Fhir.STU3 
-- dotnet add package Hl7.Fhir.Specification.STU3
+- dotnet add package Hl7.Fhir.STU3 --version <v x.x>
 ```
 
 ### HL7-FHIR V-R4:
 
 ```bash
- dotnet add package Hl7.Fhir.R4
- dotnet add package Hl7.Fhir.Specification.R4
+ dotnet add package Hl7.Fhir.R4 --version <v x.x>
 ```
 
 ### HL7-FHIR V-R4B:
 
 ```bash
- dotnet add package Hl7.Fhir.R4B
- dotnet add package Hl7.Fhir.Specification.R4B
+ dotnet add package Hl7.Fhir.R4B --version <v x.x>
 ```
 
 ### HL7-FHIR V-R5:
 
 ```bash
- dotnet add package Hl7.Fhir.R5 
- dotnet add package Hl7.Fhir.Specification.R5
+ dotnet add package Hl7.Fhir.R5 --version <v x.x>
 ```
 
 ### RUN THE PROJECT:
@@ -151,66 +151,4 @@ var client = new FhirClient(fhirServer);
 #or
 
 var client = new FhirClient("http://vonk-fire.ly");
-
-```
-
-### FhirClientSettings
-
-To specify some specific settings, you add a **FhirClientSettings** to the constructor.
-
-```bash
-var settings = new FhirClientSettings
-        {
-            Timeout = 0,
-            PreferredFormat = ResourceFormat.Json,
-            VerifyFhirVersion = true,
-            ReturnPreference = ReturnPreference.Minimal
-        };
-var client = new FhirClient("http://server.fire.ly", settings)
-```
-You can toggle these settings after the client has been initialized.
-
-#### PreferredFormat
-
-The default setting for this field is XML.
-
-To specify the preferred format –JSON or XML– of the content to be used when communicating with the FHIR server, you can use the **PreferredFormat** attribute.
-
-
-```bash
-client.Settings.PreferredFormat = ResourceFormat.Json;
-```
-
-#### UseFormatParameter
-
-When communicating the preferred format to the server, this can either be done by appending _format=[format] to the URL, or setting the Accept HTTP header. The client uses the latter by default, but if you want, you can use the _format parameter instead.
-
-```bash
-client.Settings.UseFormatParameter = true;
-```
-
-## Conecting the Client to the server
-
-```bash
-namespace fhir1srProject
-{
-    class Programm
-    {
-        #associating the server 
-        private const string fhirServer = "http://vonk-fire.ly";
-  
-        static void Main(String[] args)
-        {
-            #associating the server to the client
-            FhirClient fhirClient = new FhirClient(fhirServer);
-	  
-            #preferred settings
-            var settigs = new FhirClientSettings
-            {
-                PreferredFormat = ResourceFormat.Json,
-                ReturnPreference = ReturnPreference.Representation,
-            };
-        }
-    }
-}
 ```
