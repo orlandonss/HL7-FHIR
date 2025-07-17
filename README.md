@@ -158,6 +158,13 @@ The server Demo to link to the project will depend in wich version you do use, s
 
 When workin with HTTP the port number is 80, while when working with HTTPS the port is 443.
 
+The use of **port 200** for HTTP communication in the context of FHIR services—specifically within the SPMS technical specifications—appears in reference to **the integration endpoints for the PNB (Plataforma Nacional de Dados de Saúde) referent to Portugal.**
+
+This port may be used in  **in FHIR POST messages** , such as for:
+
+* Operation `10711` – `MCDT_SYNC_WITHOUT_REQUEST`
+* Operation `10712` – `MCDT_RETRIEVAL_WITHOUT_REQUEST`
+
 # Methods / Constructors:
 
 ### FhirClient
