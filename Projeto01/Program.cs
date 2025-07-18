@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Rest;
 using Hl7.Fhir.Serialization;
+using Hl7.FhirPath.Expressions;
 
 namespace Project01
 {
@@ -21,21 +22,57 @@ namespace Project01
                     PreferredReturn = Prefer.ReturnRepresentation
                 }
             };
-            Bundle patientBundle = client.Search<Patient>(null);
-            Console.WriteLine($"Entry count: {patientBundle.Entry.Count}");
 
+            var parametes = new string[] { "_summary=count" };
+            Bundle patientTotal = client.Search<Patient>(parametes);
+            Bundle patientBundle = client.Search<Patient>(null);
+
+            countEntries(patientTotal);
+            countPatiensInBundle(patientBundle);
+            //searchPatientsUrl(patientBundle);
+            listPatientsInBundle(patientBundle);
+
+        }
+
+        public static void searchPatientsUrl(Bundle patients)
+        {
             int patientNumber = 1;
-            foreach (Bundle.EntryComponent entry in patientBundle.Entry)
+
+            foreach (Bundle.EntryComponent entry in patients.Entry)
             {
-                System.Console.WriteLine($"Entry - {patientNumber,3}:{entry.FullUrl}");
+                Console.WriteLine($"Entry - {patientNumber,3}:{entry.FullUrl}");
                 patientNumber++;
+            }
+        }
+
+        public static void listPatientsInBundle(Bundle patients)
+        {
+            int patientNumber = 1;
+            foreach (Bundle.EntryComponent entry in patients.Entry)
+            {
+
+                Console.WriteLine($"Entry: {patientNumber}");
 
                 if (entry.Resource != null)
                 {
-                    Patient patient = (Patient)entry.Resource;
-                    System.Console.WriteLine($"- {patient.Id,20} {patient.Name}");
+                    Patient temp = (Patient)entry.Resource;
+                    Console.WriteLine($"Id:{temp.Id}");
+                    if (temp.Name.Count > 0)
+                    {
+                        Console.WriteLine("Url: " + entry.FullUrl);
+                        Console.WriteLine($"Name:{temp.Name[0].ToString()}\n");
+                    }
                 }
+                patientNumber++;
             }
+        }
+        public static void countEntries(Bundle patients)
+        {
+            Console.WriteLine($"Total Entries: {patients.Total}\n");
+        }
+        public static void countPatiensInBundle(Bundle patients)
+        {
+            Console.WriteLine($"Total Patients in Bundle: {patients.Entry.Count}");
         }
     }
 }

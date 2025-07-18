@@ -8,60 +8,60 @@
     ".NETCoreApp,Version=v9.0": {
       "Projeto01/1.0.0": {
         "dependencies": {
-          "Hl7.Fhir.STU3": "1.9.0"
+          "Hl7.Fhir.STU3": "3.1.0"
         },
         "runtime": {
           "Projeto01.dll": {}
         }
       },
-      "Hl7.Fhir.ElementModel/1.9.0": {
+      "Hl7.Fhir.ElementModel/3.1.0": {
         "dependencies": {
-          "Hl7.Fhir.Support": "1.9.0",
+          "Hl7.Fhir.Support": "3.1.0",
           "System.ValueTuple": "4.5.0"
         },
         "runtime": {
           "lib/netstandard2.0/Hl7.Fhir.ElementModel.dll": {
-            "assemblyVersion": "1.9.0.0",
-            "fileVersion": "1.9.0.0"
+            "assemblyVersion": "3.1.0.0",
+            "fileVersion": "3.1.0.0"
           }
         }
       },
-      "Hl7.Fhir.Serialization/1.9.0": {
+      "Hl7.Fhir.Serialization/3.1.0": {
         "dependencies": {
-          "Hl7.Fhir.ElementModel": "1.9.0",
-          "Hl7.Fhir.Support": "1.9.0",
-          "Newtonsoft.Json": "11.0.2",
+          "Hl7.Fhir.ElementModel": "3.1.0",
+          "Hl7.Fhir.Support": "3.1.0",
+          "Newtonsoft.Json": "12.0.2",
           "System.ValueTuple": "4.5.0"
         },
         "runtime": {
           "lib/netstandard2.0/Hl7.Fhir.Serialization.dll": {
-            "assemblyVersion": "1.9.0.0",
-            "fileVersion": "1.9.0.0"
+            "assemblyVersion": "3.1.0.0",
+            "fileVersion": "3.1.0.0"
           }
         }
       },
-      "Hl7.Fhir.STU3/1.9.0": {
+      "Hl7.Fhir.STU3/3.1.0": {
         "dependencies": {
-          "Hl7.Fhir.Serialization": "1.9.0",
-          "Hl7.Fhir.Support": "1.9.0",
-          "Hl7.Fhir.Support.Poco": "1.9.0",
-          "Hl7.FhirPath": "1.9.0",
+          "Hl7.Fhir.Serialization": "3.1.0",
+          "Hl7.Fhir.Support": "3.1.0",
+          "Hl7.Fhir.Support.Poco": "3.1.0",
+          "Hl7.FhirPath": "3.1.0",
           "System.ComponentModel": "4.3.0",
           "System.ComponentModel.Annotations": "4.5.0",
           "System.ComponentModel.Primitives": "4.3.0",
-          "System.Net.Http": "4.3.3",
+          "System.Net.Http": "4.3.4",
           "System.Net.Requests": "4.3.0",
           "System.Runtime.Serialization.Primitives": "4.3.0",
           "System.ValueTuple": "4.5.0"
         },
         "runtime": {
           "lib/netstandard2.0/Hl7.Fhir.STU3.Core.dll": {
-            "assemblyVersion": "1.9.0.0",
-            "fileVersion": "1.9.0.0"
+            "assemblyVersion": "3.1.0.0",
+            "fileVersion": "3.1.0.0"
           }
         }
       },
-      "Hl7.Fhir.Support/1.9.0": {
+      "Hl7.Fhir.Support/3.1.0": {
         "dependencies": {
           "System.Reflection.Emit": "4.3.0",
           "System.Reflection.Emit.Lightweight": "4.3.0",
@@ -69,49 +69,52 @@
         },
         "runtime": {
           "lib/netstandard2.0/Hl7.Fhir.Support.dll": {
-            "assemblyVersion": "1.9.0.0",
-            "fileVersion": "1.9.0.0"
+            "assemblyVersion": "3.1.0.0",
+            "fileVersion": "3.1.0.0"
           }
         }
       },
-      "Hl7.Fhir.Support.Poco/1.9.0": {
+      "Hl7.Fhir.Support.Poco/3.1.0": {
         "dependencies": {
-          "Hl7.Fhir.Support": "1.9.0",
+          "Hl7.Fhir.ElementModel": "3.1.0",
+          "Hl7.Fhir.Serialization": "3.1.0",
+          "Hl7.Fhir.Support": "3.1.0",
+          "Hl7.FhirPath": "3.1.0",
           "System.ComponentModel": "4.3.0",
           "System.ComponentModel.Annotations": "4.5.0",
           "System.ComponentModel.Primitives": "4.3.0",
-          "System.Net.Http": "4.3.3",
+          "System.Net.Http": "4.3.4",
           "System.Net.Requests": "4.3.0",
           "System.Runtime.Serialization.Primitives": "4.3.0",
           "System.ValueTuple": "4.5.0"
         },
         "runtime": {
           "lib/netstandard2.0/Hl7.Fhir.Support.Poco.dll": {
-            "assemblyVersion": "1.9.0.0",
-            "fileVersion": "1.9.0.0"
+            "assemblyVersion": "3.1.0.0",
+            "fileVersion": "3.1.0.0"
           }
         }
       },
-      "Hl7.FhirPath/1.9.0": {
+      "Hl7.FhirPath/3.1.0": {
         "dependencies": {
-          "Hl7.Fhir.ElementModel": "1.9.0",
-          "Hl7.Fhir.Support": "1.9.0",
+          "Hl7.Fhir.ElementModel": "3.1.0",
+          "Hl7.Fhir.Support": "3.1.0",
           "System.ValueTuple": "4.5.0"
         },
         "runtime": {
           "lib/netstandard2.0/Hl7.FhirPath.dll": {
-            "assemblyVersion": "1.9.0.0",
-            "fileVersion": "1.9.0.0"
+            "assemblyVersion": "3.1.0.0",
+            "fileVersion": "3.1.0.0"
           }
         }
       },
-      "Microsoft.NETCore.Platforms/1.1.0": {},
+      "Microsoft.NETCore.Platforms/1.1.1": {},
       "Microsoft.NETCore.Targets/1.1.0": {},
-      "Newtonsoft.Json/11.0.2": {
+      "Newtonsoft.Json/12.0.2": {
         "runtime": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {
-            "assemblyVersion": "11.0.0.0",
-            "fileVersion": "11.0.2.21924"
+            "assemblyVersion": "12.0.0.0",
+            "fileVersion": "12.0.2.23222"
           }
         }
       },
@@ -120,13 +123,13 @@
       "runtime.fedora.24-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {},
       "runtime.native.System/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "1.1.1",
           "Microsoft.NETCore.Targets": "1.1.0"
         }
       },
       "runtime.native.System.Net.Http/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "1.1.1",
           "Microsoft.NETCore.Targets": "1.1.0"
         }
       },
@@ -159,7 +162,7 @@
       "runtime.ubuntu.16.10-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {},
       "System.Collections/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "1.1.1",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Runtime": "4.3.0"
         }
@@ -193,7 +196,7 @@
       },
       "System.Diagnostics.Debug/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "1.1.1",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Runtime": "4.3.0"
         }
@@ -209,21 +212,21 @@
       },
       "System.Diagnostics.Tracing/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "1.1.1",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Runtime": "4.3.0"
         }
       },
       "System.Globalization/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "1.1.1",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Runtime": "4.3.0"
         }
       },
       "System.Globalization.Calendars/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "1.1.1",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Globalization": "4.3.0",
           "System.Runtime": "4.3.0"
@@ -231,7 +234,7 @@
       },
       "System.Globalization.Extensions/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "1.1.1",
           "System.Globalization": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
           "System.Runtime": "4.3.0",
@@ -241,7 +244,7 @@
       },
       "System.IO/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "1.1.1",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Runtime": "4.3.0",
           "System.Text.Encoding": "4.3.0",
@@ -250,7 +253,7 @@
       },
       "System.IO.FileSystem/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "1.1.1",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.IO": "4.3.0",
           "System.IO.FileSystem.Primitives": "4.3.0",
@@ -274,9 +277,9 @@
           "System.Runtime.Extensions": "4.3.0"
         }
       },
-      "System.Net.Http/4.3.3": {
+      "System.Net.Http/4.3.4": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "1.1.1",
           "System.Collections": "4.3.0",
           "System.Diagnostics.Debug": "4.3.0",
           "System.Diagnostics.DiagnosticSource": "4.3.0",
@@ -306,7 +309,7 @@
       },
       "System.Net.Primitives/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "1.1.1",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Runtime": "4.3.0",
           "System.Runtime.Handles": "4.3.0"
@@ -314,13 +317,13 @@
       },
       "System.Net.Requests/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "1.1.1",
           "System.Collections": "4.3.0",
           "System.Diagnostics.Debug": "4.3.0",
           "System.Diagnostics.Tracing": "4.3.0",
           "System.Globalization": "4.3.0",
           "System.IO": "4.3.0",
-          "System.Net.Http": "4.3.3",
+          "System.Net.Http": "4.3.4",
           "System.Net.Primitives": "4.3.0",
           "System.Net.WebHeaderCollection": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
@@ -339,7 +342,7 @@
       },
       "System.Reflection/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "1.1.1",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.IO": "4.3.0",
           "System.Reflection.Primitives": "4.3.0",
@@ -372,14 +375,14 @@
       },
       "System.Reflection.Primitives/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "1.1.1",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Runtime": "4.3.0"
         }
       },
       "System.Resources.ResourceManager/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "1.1.1",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Globalization": "4.3.0",
           "System.Reflection": "4.3.0",
@@ -388,27 +391,27 @@
       },
       "System.Runtime/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "1.1.1",
           "Microsoft.NETCore.Targets": "1.1.0"
         }
       },
       "System.Runtime.Extensions/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "1.1.1",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Runtime": "4.3.0"
         }
       },
       "System.Runtime.Handles/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "1.1.1",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Runtime": "4.3.0"
         }
       },
       "System.Runtime.InteropServices/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "1.1.1",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Reflection": "4.3.0",
           "System.Reflection.Primitives": "4.3.0",
@@ -432,7 +435,7 @@
       },
       "System.Security.Cryptography.Algorithms/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "1.1.1",
           "System.Collections": "4.3.0",
           "System.IO": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
@@ -450,7 +453,7 @@
       },
       "System.Security.Cryptography.Cng/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "1.1.1",
           "System.IO": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
           "System.Runtime": "4.3.0",
@@ -465,7 +468,7 @@
       },
       "System.Security.Cryptography.Csp/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "1.1.1",
           "System.IO": "4.3.0",
           "System.Reflection": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
@@ -482,7 +485,7 @@
       },
       "System.Security.Cryptography.Encoding/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "1.1.1",
           "System.Collections": "4.3.0",
           "System.Collections.Concurrent": "4.3.0",
           "System.Linq": "4.3.0",
@@ -526,7 +529,7 @@
       },
       "System.Security.Cryptography.X509Certificates/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "1.1.1",
           "System.Collections": "4.3.0",
           "System.Diagnostics.Debug": "4.3.0",
           "System.Globalization": "4.3.0",
@@ -555,7 +558,7 @@
       },
       "System.Text.Encoding/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "1.1.1",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Runtime": "4.3.0"
         }
@@ -568,7 +571,7 @@
       },
       "System.Threading.Tasks/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "1.1.1",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Runtime": "4.3.0"
         }
@@ -582,54 +585,54 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Hl7.Fhir.ElementModel/1.9.0": {
+    "Hl7.Fhir.ElementModel/3.1.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-SCLkDa02sMXQxdyWKWXSpHRScDwT4xOSTYOGp9Elw5cyGZ/TvAF68mS3AafL6FiDqa3iC8KT7r1fP5kEaM6C0A==",
-      "path": "hl7.fhir.elementmodel/1.9.0",
-      "hashPath": "hl7.fhir.elementmodel.1.9.0.nupkg.sha512"
+      "sha512": "sha512-jAtp6V7C12yFy+sxYrQAQ3yqYnRwBnTqrmdLw52ppU7fkoHJLb0Zt2sQQnRlUCsa1ZqinCm93OOPcNRubjbDoQ==",
+      "path": "hl7.fhir.elementmodel/3.1.0",
+      "hashPath": "hl7.fhir.elementmodel.3.1.0.nupkg.sha512"
     },
-    "Hl7.Fhir.Serialization/1.9.0": {
+    "Hl7.Fhir.Serialization/3.1.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-U1j4Ey/fSSTZiU9GrqZd2twrxLQihbhUor9/V/GKPoDGMzZHiUhMGtNF8IYJhd/BVXY7JKA7dtidtnBbrZCe/Q==",
-      "path": "hl7.fhir.serialization/1.9.0",
-      "hashPath": "hl7.fhir.serialization.1.9.0.nupkg.sha512"
+      "sha512": "sha512-uhUulWegW7U3o8CWE7i66p9TGQAalniMEpH5jy0ZeBfkRHp0EdBz1W+7VP+jIHjuzQQo+rdAkAF2KH96gPLP7w==",
+      "path": "hl7.fhir.serialization/3.1.0",
+      "hashPath": "hl7.fhir.serialization.3.1.0.nupkg.sha512"
     },
-    "Hl7.Fhir.STU3/1.9.0": {
+    "Hl7.Fhir.STU3/3.1.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-e2PVJ+dB6sQ+NpknNa+6BXG9JFiJwvfxlskg7BVagsAgy2Yc+wzcrN8YhcVIupRsdFJLk3OAtYr2P+0G7u95Sg==",
-      "path": "hl7.fhir.stu3/1.9.0",
-      "hashPath": "hl7.fhir.stu3.1.9.0.nupkg.sha512"
+      "sha512": "sha512-ltHqA+Bzq38RvokQ0A6AF/O85t22SRn26uUWLLoEheCM+BvGt/EoNQcGkk6pdyfLM5fx3ycIQTy3QCjyDeA0Mw==",
+      "path": "hl7.fhir.stu3/3.1.0",
+      "hashPath": "hl7.fhir.stu3.3.1.0.nupkg.sha512"
     },
-    "Hl7.Fhir.Support/1.9.0": {
+    "Hl7.Fhir.Support/3.1.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-tZJvsXnXmQZJ4VPwKMPiBEWTZliluW9gWkjYK9kqf6FR6S1SL4MXT+sLO0GAxwmEi4Qi3hBsb8G3zT4Detc4kA==",
-      "path": "hl7.fhir.support/1.9.0",
-      "hashPath": "hl7.fhir.support.1.9.0.nupkg.sha512"
+      "sha512": "sha512-PLhWQJiSIBfPm+vKrhU8us64mYXmfyGpary6yhR/ur/A6qXOmyaHWSyvjII+ccmcO164yEMdn4RrsY8kNZJ1Wg==",
+      "path": "hl7.fhir.support/3.1.0",
+      "hashPath": "hl7.fhir.support.3.1.0.nupkg.sha512"
     },
-    "Hl7.Fhir.Support.Poco/1.9.0": {
+    "Hl7.Fhir.Support.Poco/3.1.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-PSvbxx9zjTJhs7PCrSiQMkwKBSWL7uuSGC57uMFqOw5dZaP1rXANV67WTrdUnNytwhAl4i2DklzFK5XiPPZwHw==",
-      "path": "hl7.fhir.support.poco/1.9.0",
-      "hashPath": "hl7.fhir.support.poco.1.9.0.nupkg.sha512"
+      "sha512": "sha512-7bIIHiuPYDLnzZONY0U6R4b7bRC47mXD+kcvOPKvvXLfjAx2XhCGO5cMsNw1rPnRerm45LaanoU/KXKcv7Nvwg==",
+      "path": "hl7.fhir.support.poco/3.1.0",
+      "hashPath": "hl7.fhir.support.poco.3.1.0.nupkg.sha512"
     },
-    "Hl7.FhirPath/1.9.0": {
+    "Hl7.FhirPath/3.1.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-wevQx3Gw8mqtYRX4as/4a9TxBWKJqftEPXHiNuGuJViYzgBpslTIJMxDMCuiQIXg4cSK5Gq88MfuoFNWAC5Fvw==",
-      "path": "hl7.fhirpath/1.9.0",
-      "hashPath": "hl7.fhirpath.1.9.0.nupkg.sha512"
+      "sha512": "sha512-6iWmSiwiPBFQCDGSinAjj4pSDRcM5nQv3kjV1D7lTD6UZOuiK14pXuFT7/dtlrtukGMWn0+qgp0eIvYkBV0rSw==",
+      "path": "hl7.fhirpath/3.1.0",
+      "hashPath": "hl7.fhirpath.3.1.0.nupkg.sha512"
     },
-    "Microsoft.NETCore.Platforms/1.1.0": {
+    "Microsoft.NETCore.Platforms/1.1.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
-      "path": "microsoft.netcore.platforms/1.1.0",
-      "hashPath": "microsoft.netcore.platforms.1.1.0.nupkg.sha512"
+      "sha512": "sha512-TMBuzAHpTenGbGgk0SMTwyEkyijY/Eae4ZGsFNYJvAr/LDn1ku3Etp3FPxChmDp5HHF3kzJuoaa08N0xjqAJfQ==",
+      "path": "microsoft.netcore.platforms/1.1.1",
+      "hashPath": "microsoft.netcore.platforms.1.1.1.nupkg.sha512"
     },
     "Microsoft.NETCore.Targets/1.1.0": {
       "type": "package",
@@ -638,12 +641,12 @@
       "path": "microsoft.netcore.targets/1.1.0",
       "hashPath": "microsoft.netcore.targets.1.1.0.nupkg.sha512"
     },
-    "Newtonsoft.Json/11.0.2": {
+    "Newtonsoft.Json/12.0.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-IvJe1pj7JHEsP8B8J8DwlMEx8UInrs/x+9oVY+oCD13jpLu4JbJU2WCIsMRn5C4yW9+DgkaO8uiVE5VHKjpmdQ==",
-      "path": "newtonsoft.json/11.0.2",
-      "hashPath": "newtonsoft.json.11.0.2.nupkg.sha512"
+      "sha512": "sha512-rTK0s2EKlfHsQsH6Yx2smvcTCeyoDNgCW7FEYyV01drPlh2T243PR2DiDXqtC5N4GDm4Ma/lkxfW5a/4793vbA==",
+      "path": "newtonsoft.json/12.0.2",
+      "hashPath": "newtonsoft.json.12.0.2.nupkg.sha512"
     },
     "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {
       "type": "package",
@@ -855,12 +858,12 @@
       "path": "system.linq/4.3.0",
       "hashPath": "system.linq.4.3.0.nupkg.sha512"
     },
-    "System.Net.Http/4.3.3": {
+    "System.Net.Http/4.3.4": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-7rCqIbkC/P2+A00NoDH5gnvFhADmX7Dc4INvsOajbU1MVhktE9vZNrjPtF82N6Uo7obK+yzlrPUv/M+snnN/9w==",
-      "path": "system.net.http/4.3.3",
-      "hashPath": "system.net.http.4.3.3.nupkg.sha512"
+      "sha512": "sha512-aOa2d51SEbmM+H+Csw7yJOuNZoHkrP2XnAurye5HWYgGVVU54YZDvsLUYRv6h18X3sPnjNCANmN7ZhIPiqMcjA==",
+      "path": "system.net.http/4.3.4",
+      "hashPath": "system.net.http.4.3.4.nupkg.sha512"
     },
     "System.Net.Primitives/4.3.0": {
       "type": "package",
