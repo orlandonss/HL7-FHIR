@@ -5,10 +5,6 @@ using Hl7.Fhir.Model;
 using Hl7.Fhir.Rest;
 using Hl7.Fhir.Serialization;
 
-
-
-
-
 namespace Project01
 {
 
@@ -19,8 +15,11 @@ namespace Project01
         {
             FhirClient client = new FhirClient(fhirServer)
             {
-                PreferredFormat = ResourceFormat.Json,
-                PreferredReturn = Prefer.ReturnRepresentation
+                Settings =
+                {
+                    PreferredFormat = ResourceFormat.Json,
+                    PreferredReturn = Prefer.ReturnRepresentation
+                }
             };
             Bundle patientBundle = client.Search<Patient>(null);
             Console.WriteLine($"Entry count: {patientBundle.Entry.Count}");
