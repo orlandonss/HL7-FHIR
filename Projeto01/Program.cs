@@ -29,10 +29,10 @@ namespace Project01
 
             countEntries(patientTotal);
             countPatiensInBundle(patientBundle);
-            //searchPatientsUrl(patientBundle);
             listPatientsInBundle(patientBundle);
-
+            //searchPatientsUrl(patientBundle);
         }
+
 
         public static void searchPatientsUrl(Bundle patients)
         {
@@ -44,7 +44,7 @@ namespace Project01
                 patientNumber++;
             }
         }
-
+        
         public static void listPatientsInBundle(Bundle patients)
         {
             int patientNumber = 1;
