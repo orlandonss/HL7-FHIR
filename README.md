@@ -242,10 +242,10 @@ using Hl7.FhirPath.Expressions;
 
 namespace Project01
 {
+
     public static class FhirProject
     {
         private const string fhirServer = "http://hapi.fhir.org/baseDstu3";
-      
         static void Main(string[] args)
         {
             FhirClient client = new FhirClient(fhirServer)
@@ -263,25 +263,70 @@ namespace Project01
 
             countEntries(patientTotal);
             countPatiensInBundle(patientBundle);
-            listPatientsInBundle(patientBundle);
-            //searchPatientsUrl(patientBundle);
+
+            //needeed to call functions to know about that ;)
+
         }
 
-        public static void searchPatientsUrl(Bundle patients)
+        public static void listAllPatientsUrl(FhirClient c ,Bundle patientsBundle)
         {
             int patientNumber = 1;
-
-            foreach (Bundle.EntryComponent entry in patients.Entry)
+            while (patientsBundle != null)
+            {
+                foreach (Bundle.EntryComponent entry in patientsBundle.Entry)
+                {
+                    Console.WriteLine($"Entry - {patientNumber,3}:{entry.FullUrl}");
+                    patientNumber++;
+                }
+                patientsBundle = c.Continue(patientsBundle);
+            }
+        }
+        
+        public static void listBundlePatientsUrl(Bundle patientsBundle)
+        {
+            int patientNumber = 1;
+            foreach (Bundle.EntryComponent entry in patientsBundle.Entry)
             {
                 Console.WriteLine($"Entry - {patientNumber,3}:{entry.FullUrl}");
                 patientNumber++;
             }
         }
-      
-        public static void listPatientsInBundle(Bundle patients)
+        
+        public static void listAllPatientsInBundle(FhirClient c, Bundle patientsBundle)
         {
             int patientNumber = 1;
-            foreach (Bundle.EntryComponent entry in patients.Entry)
+            while (patientsBundle != null)
+            {
+                //list each patients in the bundle
+                countPatiensInBundle(patientsBundle);
+                foreach (Bundle.EntryComponent entry in patientsBundle.Entry)
+                {
+
+                    Console.WriteLine($"Entry: {patientNumber}");
+
+                    if (entry.Resource != null)
+                    {
+                        Patient temp = (Patient)entry.Resource;
+                        Console.WriteLine($"Id:{temp.Id}");
+                        if (temp.Name.Count > 0)
+                        {
+                            Console.WriteLine("Url: " + entry.FullUrl);
+                            Console.WriteLine($"Name:{temp.Name[0].ToString()}\n");
+                        }
+                    }
+                    patientNumber++;
+                }
+                patientsBundle = c.Continue(patientsBundle);
+            }
+        }
+
+        public static void listoneBundle(Bundle patientsBundle)
+        {
+              int patientNumber = 1;
+           
+                countPatiensInBundle(patientsBundle);
+
+                foreach (Bundle.EntryComponent entry in patientsBundle.Entry)
             {
 
                 Console.WriteLine($"Entry: {patientNumber}");
@@ -298,16 +343,16 @@ namespace Project01
                 }
                 patientNumber++;
             }
+            
         }
 
-        public static void countEntries(Bundle patients)
+        public static void countEntries(Bundle patientsBundle)
         {
-            Console.WriteLine($"Total Entries: {patients.Total}\n");
+            Console.WriteLine($"Total Entries: {patientsBundle.Total}\n");
         }
-
-        public static void countPatiensInBundle(Bundle patients)
+        public static void countPatiensInBundle(Bundle patientsBundle)
         {
-            Console.WriteLine($"Total Patients in Bundle: {patients.Entry.Count}");
+            Console.WriteLine($"Total Patients in Bundle: {patientsBundle.Entry.Count}");
         }
     }
 }
@@ -323,7 +368,7 @@ the total number of matches, but only if the server supports and returns it — 
 
 ### Discover URL from a patient
 
-Entrys aren't directly patiets, so we can use var or specify that it is an **Bundle.EntryComponent `<name>`** using the libary **using System.Collections.Generic"**.
+Entrys aren't directly patiets, so we can use var or specify that it is an **"Bundle.EntryComponent `<name>`"** using the libary **"using System.Collections.Generic"**.
 A entry has a lot of diferent context views so it is possible to manipulate the data in different ways.
 To find the full url we can use the **entry.FullUrl;
 
@@ -367,6 +412,26 @@ This lines ensure that the program won’t throw a NullReferenceException when t
 
 <img src="image/README/1752764230086.png" alt="My Image" width="450"/>
 
+
+### Writing in the console the data relative to the Patients:
+These following functions writes in the console the information realite to the total Number of
+patients refistered in the portal and the total presents in the current bundle.
+
+```csharp
+//total patients Present in the Portal/Server
+public static void countEntries(Bundle patientsBundle)
+        {
+            Console.WriteLine($"Total Entries: {patientsBundle.Total}\n");
+        }
+//total Patients Present in a bundle
+public static void countPatiensInBundle(Bundle patientsBundle)
+        {
+            Console.WriteLine($"Total Patients in Bundle: {patientsBundle.Entry.Count}");
+        }
+
+```
+
+
 ### Consulting patient (clear text)
 
 Previously the name, Id and other Patient information aren't readable in the format as cleartext, so it is needed to perform other tasks and modifications to the code.
@@ -374,14 +439,48 @@ The following code prints the whole data type in clear-text.
 
 ```csharp
 
-  if (entry.Resource != null)
+ if (entry.Resource != null)
+                {
+                    Patient temp = (Patient)entry.Resource;
+                    Console.WriteLine($"Id:{temp.Id}");
+                    if (temp.Name.Count > 0)
+                    {
+                        Console.WriteLine("Url: " + entry.FullUrl);
+                        Console.WriteLine($"Name:{temp.Name[0].ToString()}\n");
+                    }
+                }
+                patientNumber++;
+```
+
+### Listing the Whole patients in the bundle
+This functions lists the whole patients present in the portal, listing the whole bundles.
+
+```csharp
+  public static void listAllPatientsInBundle(FhirClient c, Bundle patientsBundle)
         {
-            Patient temp = (Patient)entry.Resource;
-            Console.WriteLine($"Id:{temp.Id}");
-            if (temp.Name.Count > 0)
+            int patientNumber = 1;
+            while (patientsBundle != null)
             {
-                Console.WriteLine("Url: " + entry.FullUrl);
-                Console.WriteLine($"Name:{temp.Name[0].ToString()}\n");
+                //list each patients in the bundle
+                countPatiensInBundle(patientsBundle);
+                foreach (Bundle.EntryComponent entry in patientsBundle.Entry)
+                {
+
+                    Console.WriteLine($"Entry: {patientNumber}");
+
+                    if (entry.Resource != null)
+                    {
+                        Patient temp = (Patient)entry.Resource;
+                        Console.WriteLine($"Id:{temp.Id}");
+                        if (temp.Name.Count > 0)
+                        {
+                            Console.WriteLine("Url: " + entry.FullUrl);
+                            Console.WriteLine($"Name:{temp.Name[0].ToString()}\n");
+                        }
+                    }
+                    patientNumber++;
+                }
+                patientsBundle = c.Continue(patientsBundle);
             }
         }
 ```

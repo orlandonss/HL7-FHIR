@@ -29,26 +29,70 @@ namespace Project01
 
             countEntries(patientTotal);
             countPatiensInBundle(patientBundle);
-            listPatientsInBundle(patientBundle);
-            //searchPatientsUrl(patientBundle);
+
+            //needeed to call functions to know about that ;)
+
         }
 
-
-        public static void searchPatientsUrl(Bundle patients)
+        public static void listAllPatientsUrl(FhirClient c ,Bundle patientsBundle)
         {
             int patientNumber = 1;
-
-            foreach (Bundle.EntryComponent entry in patients.Entry)
+            while (patientsBundle != null)
+            {
+                foreach (Bundle.EntryComponent entry in patientsBundle.Entry)
+                {
+                    Console.WriteLine($"Entry - {patientNumber,3}:{entry.FullUrl}");
+                    patientNumber++;
+                }
+                patientsBundle = c.Continue(patientsBundle);
+            }
+        }
+        
+        public static void listBundlePatientsUrl(Bundle patientsBundle)
+        {
+            int patientNumber = 1;
+            foreach (Bundle.EntryComponent entry in patientsBundle.Entry)
             {
                 Console.WriteLine($"Entry - {patientNumber,3}:{entry.FullUrl}");
                 patientNumber++;
             }
         }
         
-        public static void listPatientsInBundle(Bundle patients)
+        public static void listAllPatientsInBundle(FhirClient c, Bundle patientsBundle)
         {
             int patientNumber = 1;
-            foreach (Bundle.EntryComponent entry in patients.Entry)
+            while (patientsBundle != null)
+            {
+                //list each patients in the bundle
+                countPatiensInBundle(patientsBundle);
+                foreach (Bundle.EntryComponent entry in patientsBundle.Entry)
+                {
+
+                    Console.WriteLine($"Entry: {patientNumber}");
+
+                    if (entry.Resource != null)
+                    {
+                        Patient temp = (Patient)entry.Resource;
+                        Console.WriteLine($"Id:{temp.Id}");
+                        if (temp.Name.Count > 0)
+                        {
+                            Console.WriteLine("Url: " + entry.FullUrl);
+                            Console.WriteLine($"Name:{temp.Name[0].ToString()}\n");
+                        }
+                    }
+                    patientNumber++;
+                }
+                patientsBundle = c.Continue(patientsBundle);
+            }
+        }
+
+        public static void listoneBundle(Bundle patientsBundle)
+        {
+              int patientNumber = 1;
+           
+                countPatiensInBundle(patientsBundle);
+
+                foreach (Bundle.EntryComponent entry in patientsBundle.Entry)
             {
 
                 Console.WriteLine($"Entry: {patientNumber}");
@@ -65,14 +109,16 @@ namespace Project01
                 }
                 patientNumber++;
             }
+            
         }
-        public static void countEntries(Bundle patients)
+
+        public static void countEntries(Bundle patientsBundle)
         {
-            Console.WriteLine($"Total Entries: {patients.Total}\n");
+            Console.WriteLine($"Total Entries: {patientsBundle.Total}\n");
         }
-        public static void countPatiensInBundle(Bundle patients)
+        public static void countPatiensInBundle(Bundle patientsBundle)
         {
-            Console.WriteLine($"Total Patients in Bundle: {patients.Entry.Count}");
+            Console.WriteLine($"Total Patients in Bundle: {patientsBundle.Entry.Count}");
         }
     }
 }
