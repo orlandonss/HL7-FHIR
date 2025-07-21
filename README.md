@@ -227,9 +227,8 @@ var client = new FhirClient("http://hapi.fhir.org/baseDstu3");
 
 ### Stablish a Connection to the Public firefly Server
 
-This short  and simple following code, permit to stablish a connection to the FHIR public demo test servers and consult the number of patients in the public DataBase.
-
-![1752763075681](image/README/1752763075681.png)
+This Section represents the whole code for consulting the Patients Information presents in the server. As listing the total number of entries.
+The operations represented in the code are mostly consulting and listing operations.
 
 ```csharp
 using System;
@@ -257,18 +256,26 @@ namespace Project01
                 }
             };
 
-            var parametes = new string[] { "_summary=count" };
-            Bundle patientTotal = client.Search<Patient>(parametes);
+            var parameters = new string[] { "_summary=count" };
+            var parameters2 = new string[] { "_name=test" };
+            Bundle patientTotal = client.Search<Patient>(parameters);
             Bundle patientBundle = client.Search<Patient>(null);
+            Bundle patientSearch = client.Search<Patient>(parameters2);
 
             countEntries(patientTotal);
             countPatiensInBundle(patientBundle);
 
-            //needeed to call functions to know about that ;)
+            Console.WriteLine("\n\n-----LIST ALL PATIENTS-----\n\n");
+            //listAllPatientsInBundle(client, patientBundle);
 
+            Console.WriteLine("\n\n-----CLIENTS URL IDENTIFICATION:-----\n\n");
+            //listAllPatientsUrl(client, patientBundle);
+        
+            Console.WriteLine("\n\n-----PATIENTS WITH ENCOUNTERS----\n\n");
+            patientsWithEncounters(client, patientSearch, 3);
         }
 
-        public static void listAllPatientsUrl(FhirClient c ,Bundle patientsBundle)
+        public static void listAllPatientsUrl(FhirClient c, Bundle patientsBundle)
         {
             int patientNumber = 1;
             while (patientsBundle != null)
@@ -281,7 +288,7 @@ namespace Project01
                 patientsBundle = c.Continue(patientsBundle);
             }
         }
-        
+
         public static void listBundlePatientsUrl(Bundle patientsBundle)
         {
             int patientNumber = 1;
@@ -291,14 +298,13 @@ namespace Project01
                 patientNumber++;
             }
         }
-        
+
         public static void listAllPatientsInBundle(FhirClient c, Bundle patientsBundle)
         {
             int patientNumber = 1;
             while (patientsBundle != null)
             {
                 //list each patients in the bundle
-                countPatiensInBundle(patientsBundle);
                 foreach (Bundle.EntryComponent entry in patientsBundle.Entry)
                 {
 
@@ -322,11 +328,8 @@ namespace Project01
 
         public static void listoneBundle(Bundle patientsBundle)
         {
-              int patientNumber = 1;
-           
-                countPatiensInBundle(patientsBundle);
-
-                foreach (Bundle.EntryComponent entry in patientsBundle.Entry)
+            int patientNumber = 1;
+            foreach (Bundle.EntryComponent entry in patientsBundle.Entry)
             {
 
                 Console.WriteLine($"Entry: {patientNumber}");
@@ -343,28 +346,56 @@ namespace Project01
                 }
                 patientNumber++;
             }
-            
+        }
+
+        public static void patientsWithEncounters(FhirClient c, Bundle patientsBundle, int maxCount)
+        {
+            //to implement :)
         }
 
         public static void countEntries(Bundle patientsBundle)
         {
-            Console.WriteLine($"Total Entries: {patientsBundle.Total}\n");
+            Console.WriteLine($"Total Entries: {patientsBundle.Total}");
         }
+        
         public static void countPatiensInBundle(Bundle patientsBundle)
         {
-            Console.WriteLine($"Total Patients in Bundle: {patientsBundle.Entry.Count}");
+            Console.WriteLine($"Total Patients in Bundle: {patientsBundle.Entry.Count}\n");
         }
     }
 }
 ```
 
+
 ### patientBundle.Entry.Count:
 
-the number of entries actually returned in this page.
+the number of entries actually returned in the sever.
 
 ### patientBundle.Total:
 
 the total number of matches, but only if the server supports and returns it — which many FHIR servers (like HAPI) don’t by default.
+
+### Writing in the console the data relative to the Patients:
+These following functions writes in the console the information relative to the total Number of
+patients registered in the portal and the total in the current bundle.
+
+```csharp
+//total patients Present in the Portal/Server
+public static void countEntries(Bundle patientsBundle)
+        {
+            Console.WriteLine($"Total Entries: {patientsBundle.Total}\n");
+        }
+//total Patients Present in a bundle
+public static void countPatiensInBundle(Bundle patientsBundle)
+        {
+            Console.WriteLine($"Total Patients in Bundle: {patientsBundle.Entry.Count}");
+        }
+```
+**Folowing output:**
+
+![1753109789408](image/README/1753109789408.png) 
+
+
 
 ### Discover URL from a patient
 
@@ -388,7 +419,7 @@ generating the following output:
 
 <img src="image/README/1752763051480.png" alt="My Image" width="400"/>
 
-### Consulting patient (not clear text)
+### Consulting patient url
 
 In a FHIR Bundle, each Bundle.Entry contains a Resource (e.g., Patient, Observation, etc.). Sometimes, an entry might be incomplete or not contain a resource — especially if you're parsing or filtering a bundle that mixes metadata with data resources.
 
@@ -412,27 +443,7 @@ This lines ensure that the program won’t throw a NullReferenceException when t
 
 <img src="image/README/1752764230086.png" alt="My Image" width="450"/>
 
-
-### Writing in the console the data relative to the Patients:
-These following functions writes in the console the information realite to the total Number of
-patients refistered in the portal and the total presents in the current bundle.
-
-```csharp
-//total patients Present in the Portal/Server
-public static void countEntries(Bundle patientsBundle)
-        {
-            Console.WriteLine($"Total Entries: {patientsBundle.Total}\n");
-        }
-//total Patients Present in a bundle
-public static void countPatiensInBundle(Bundle patientsBundle)
-        {
-            Console.WriteLine($"Total Patients in Bundle: {patientsBundle.Entry.Count}");
-        }
-
-```
-
-
-### Consulting patient (clear text)
+### Consulting patient info
 
 Previously the name, Id and other Patient information aren't readable in the format as cleartext, so it is needed to perform other tasks and modifications to the code.
 The following code prints the whole data type in clear-text.
@@ -449,7 +460,6 @@ The following code prints the whole data type in clear-text.
                         Console.WriteLine($"Name:{temp.Name[0].ToString()}\n");
                     }
                 }
-                patientNumber++;
 ```
 
 ### Listing the Whole patients in the bundle
@@ -484,3 +494,8 @@ This functions lists the whole patients present in the portal, listing the whole
             }
         }
 ```
+**following output:**
+
+<img src="image/README/1753109341907.png" alt="My Image" width="380"/>
+
+It lists the total of patients entries as their url representation, Name and Id.

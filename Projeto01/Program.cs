@@ -23,18 +23,26 @@ namespace Project01
                 }
             };
 
-            var parametes = new string[] { "_summary=count" };
-            Bundle patientTotal = client.Search<Patient>(parametes);
+            var parameters = new string[] { "_summary=count" };
+            var parameters2 = new string[] { "_name=test" };
+            Bundle patientTotal = client.Search<Patient>(parameters);
             Bundle patientBundle = client.Search<Patient>(null);
+            Bundle patientSearch = client.Search<Patient>(parameters2);
 
             countEntries(patientTotal);
             countPatiensInBundle(patientBundle);
 
-            //needeed to call functions to know about that ;)
+            Console.WriteLine("\n\n-----LIST ALL PATIENTS-----\n\n");
+            //listAllPatientsInBundle(client, patientBundle);
 
+            Console.WriteLine("\n\n-----CLIENTS URL IDENTIFICATION:-----\n\n");
+            //listAllPatientsUrl(client, patientBundle);
+        
+            Console.WriteLine("\n\n-----PATIENTS WITH ENCOUNTERS----\n\n");
+           patientsWithEncounters(client, patientSearch, 3);
         }
 
-        public static void listAllPatientsUrl(FhirClient c ,Bundle patientsBundle)
+        public static void listAllPatientsUrl(FhirClient c, Bundle patientsBundle)
         {
             int patientNumber = 1;
             while (patientsBundle != null)
@@ -47,7 +55,7 @@ namespace Project01
                 patientsBundle = c.Continue(patientsBundle);
             }
         }
-        
+
         public static void listBundlePatientsUrl(Bundle patientsBundle)
         {
             int patientNumber = 1;
@@ -57,14 +65,13 @@ namespace Project01
                 patientNumber++;
             }
         }
-        
+
         public static void listAllPatientsInBundle(FhirClient c, Bundle patientsBundle)
         {
             int patientNumber = 1;
             while (patientsBundle != null)
             {
                 //list each patients in the bundle
-                countPatiensInBundle(patientsBundle);
                 foreach (Bundle.EntryComponent entry in patientsBundle.Entry)
                 {
 
@@ -88,11 +95,8 @@ namespace Project01
 
         public static void listoneBundle(Bundle patientsBundle)
         {
-              int patientNumber = 1;
-           
-                countPatiensInBundle(patientsBundle);
-
-                foreach (Bundle.EntryComponent entry in patientsBundle.Entry)
+            int patientNumber = 1;
+            foreach (Bundle.EntryComponent entry in patientsBundle.Entry)
             {
 
                 Console.WriteLine($"Entry: {patientNumber}");
@@ -109,16 +113,19 @@ namespace Project01
                 }
                 patientNumber++;
             }
-            
-        }
 
+        }
+        public static void patientsWithEncounters(FhirClient c, Bundle patientsBundle, int maxCount)
+        {
+            //to implement :)
+        }
         public static void countEntries(Bundle patientsBundle)
         {
-            Console.WriteLine($"Total Entries: {patientsBundle.Total}\n");
+            Console.WriteLine($"Total Entries: {patientsBundle.Total}");
         }
         public static void countPatiensInBundle(Bundle patientsBundle)
         {
-            Console.WriteLine($"Total Patients in Bundle: {patientsBundle.Entry.Count}");
+            Console.WriteLine($"Total Patients in Bundle: {patientsBundle.Entry.Count}\n");
         }
     }
 }
