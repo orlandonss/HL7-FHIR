@@ -37,9 +37,9 @@ namespace Project01
 
             Console.WriteLine("\n\n-----CLIENTS URL IDENTIFICATION:-----\n\n");
             //listAllPatientsUrl(client, patientBundle);
-        
+
             Console.WriteLine("\n\n-----PATIENTS WITH ENCOUNTERS----\n\n");
-           patientsWithEncounters(client, patientSearch, 3);
+            patientsWithEncounters(client, patientSearch, 3);
         }
 
         public static void listAllPatientsUrl(FhirClient c, Bundle patientsBundle)
@@ -117,8 +117,57 @@ namespace Project01
         }
         public static void patientsWithEncounters(FhirClient c, Bundle patientsBundle, int maxCount)
         {
-            //to implement :)
+            if (patientsBundle == null || patientsBundle.Entry == null || patientsBundle.Entry.Count == 0)
+            {
+                Console.WriteLine("No patients found in search.");
+                return;
+            }
+            int matchedCount = 0;
+
+            while (patientsBundle != null && matchedCount < maxCount)
+            {
+                foreach (var entry in patientsBundle.Entry)
+                {
+                    if (matchedCount >= maxCount)
+                        break;
+
+                    if (entry.Resource is Patient patient && patient.Id != null)
+                    {
+                        Console.WriteLine("Checking Patient ID: " + patient.Id);
+
+                        Bundle encounterBundle = c.Search<Encounter>(
+                            new[] { $"patient=Patient/{patient.Id}" }
+                        );
+
+                        if (encounterBundle.Entry != null && encounterBundle.Entry.Count > 0)
+                        {
+                            Console.WriteLine("");
+                            Console.WriteLine("Patient ID " + patient.Id);
+
+                            if (patient.Name.Count > 0)
+                                Console.WriteLine("Name " + patient.Name[0].ToString());
+
+                            matchedCount++;
+                        }
+                        else
+                        {
+                            Console.WriteLine("No encounters for Patient " + patient.Id);
+                        }
+                    }
+                }
+                if (matchedCount < maxCount)
+                {
+                    patientsBundle = c.Continue(patientsBundle);
+                }
+                else
+                {
+                    break;
+                }
+            }
+            if (matchedCount == 0)
+                Console.WriteLine("No patients with encounters found.");
         }
+
         public static void countEntries(Bundle patientsBundle)
         {
             Console.WriteLine($"Total Entries: {patientsBundle.Total}");
