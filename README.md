@@ -557,6 +557,8 @@ This following function is abble to search for clients with certain informations
 serching for patients name, if the name matches the it will write the patient info in the console
 else it will return no matches. 
 
+In this case of test the test server for STU3 does not provide Encounters, being the total 0 encounters.
+
 ```csharp
 public static void patientsWithEncounters(FhirClient c, Bundle patientsBundle, int maxCount){
      if (patientsBundle == null || patientsBundle.Entry == null || patientsBundle.Entry.Count == 0)
