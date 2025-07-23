@@ -1,17 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
+﻿
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Rest;
-using Hl7.Fhir.Serialization;
-using Hl7.FhirPath.Expressions;
 
 namespace Project01
 {
-
     public static class FhirProject
     {
-        private const string fhirServer = "http://hapi.fhir.org/baseDstu3";
+        private static readonly Dictionary<string, string> fhir_Servers = new Dictionary<string, string>()
+        {
+            {"PublicHapi","http://hapi.fhir.org/baseDstu3"},
+            {"Local","http://localhost:8080/fhir"},
+        };
+        private static readonly string fhirServer = fhir_Servers["PublicHapi"];
         static void Main(string[] args)
         {
             FhirClient client = new FhirClient(fhirServer)
@@ -33,13 +33,13 @@ namespace Project01
             countPatiensInBundle(patientBundle);
 
             Console.WriteLine("\n\n-----LIST ALL PATIENTS-----\n\n");
-            //listAllPatientsInBundle(client, patientBundle);
+            listAllPatientsInBundle(client, patientBundle);
 
             Console.WriteLine("\n\n-----CLIENTS URL IDENTIFICATION:-----\n\n");
             //listAllPatientsUrl(client, patientBundle);
 
             Console.WriteLine("\n\n-----PATIENTS WITH ENCOUNTERS----\n\n");
-            patientsWithEncounters(client, patientSearch, 3);
+            //patientsWithEncounters(client, patientSearch, 3);
         }
 
         public static void listAllPatientsUrl(FhirClient c, Bundle patientsBundle)
@@ -65,7 +65,6 @@ namespace Project01
                 patientNumber++;
             }
         }
-
         public static void listAllPatientsInBundle(FhirClient c, Bundle patientsBundle)
         {
             int patientNumber = 1;
@@ -167,7 +166,6 @@ namespace Project01
             if (matchedCount == 0)
                 Console.WriteLine("No patients with encounters found.");
         }
-
         public static void countEntries(Bundle patientsBundle)
         {
             Console.WriteLine($"Total Entries: {patientsBundle.Total}");
